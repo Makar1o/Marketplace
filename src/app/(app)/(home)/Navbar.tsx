@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { NavbarSidebar } from "./navbar-sidebar";
 import { useState } from "react";
-import { Ghost, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 
 const poppins = Poppins({
   subsets: ["latin"],
