@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ListFilterIcon } from "lucide-react";
-import { CategorierGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/server/types";
 
 interface Props {
-  data: CategorierGetManyOutput;
+  data: CategoriesGetManyOutput;
 }
 
 export const Categories = ({ data }: Props) => {

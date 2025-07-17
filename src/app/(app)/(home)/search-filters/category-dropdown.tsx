@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { useDropdownPosition } from "./use-dropdown-position";
 import { SubcategoryMenu } from "./subcategory-menu";
 import Link from "next/link";
-import { CategorierGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/server/types";
 
 interface Props {
-  category: CategorierGetManyOutput[1];
+  category: CategoriesGetManyOutput[1];
   isActive?: boolean;
   isNavigationHovered?: boolean;
 }

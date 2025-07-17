@@ -1,9 +1,9 @@
 import { Category } from "@/payload-types";
 import Link from "next/link";
-import { CategorierGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/server/types";
 
 interface Props {
-  category: CategorierGetManyOutput[1];
+  category: CategoriesGetManyOutput[1];
   isOpen: boolean;
   position: { top: number; left: number };
 }
