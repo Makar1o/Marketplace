@@ -1,9 +1,10 @@
 import { createTRPCRouter, baseProcedure } from "@/trpc/init";
 import { Category } from "@/payload-types";
-
+import type { Payload } from "payload";
 export const categoriesRouter = createTRPCRouter({
   getMany: baseProcedure.query(async ({ ctx }) => {
-    const data = await ctx.payload.find({
+    const payload = ctx.db as Payload;
+    const data = await payload.find({
       collection: "categories",
       depth: 1,
       pagination: false,
