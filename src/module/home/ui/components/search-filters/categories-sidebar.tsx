@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { CategorierGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/server/types";
 
 interface Props {
   open: boolean;
@@ -25,9 +25,9 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
   const router = useRouter();
 
   const [parentCategories, setParentCategories] =
-    useState<CategorierGetManyOutput | null>(null);
+    useState<CategoriesGetManyOutput | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<
-    CategorierGetManyOutput[1] | null
+    CategoriesGetManyOutput[1] | null
   >(null);
 
   const currentCategories = parentCategories ?? data ?? [];
@@ -38,9 +38,9 @@ export const CategoriesSidebar = ({ open, onOpenChange }: Props) => {
     onOpenChange(open);
   };
 
-  const handleCategoryClick = (category: CategorierGetManyOutput[1]) => {
+  const handleCategoryClick = (category: CategoriesGetManyOutput[1]) => {
     if (category.subcategories && category.subcategories.length > 0) {
-      setParentCategories(category.subcategories as CategorierGetManyOutput);
+      setParentCategories(category.subcategories as CategoriesGetManyOutput);
       setSelectedCategory(category);
     } else {
       // this is a leaf category (no subcategories)
