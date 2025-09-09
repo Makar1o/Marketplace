@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SubcategoryMenu } from "./subcategory-menu";
 import Link from "next/link";
-import { CategoriesGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/types";
 
 interface Props {
   category: CategoriesGetManyOutput[1];

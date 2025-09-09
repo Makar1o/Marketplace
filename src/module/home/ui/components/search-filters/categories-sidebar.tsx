@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { CategoriesGetManyOutput } from "@/module/categories/server/types";
+import { CategoriesGetManyOutput } from "@/module/categories/types";
 
 interface Props {
   open: boolean;
