@@ -14,6 +14,7 @@ export const Products: CollectionConfig = {
   },
   admin: {
     useAsTitle: "name",
+    description: "You must verify your Stripe account before adding products",
   },
   fields: [
     {
