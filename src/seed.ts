@@ -1,6 +1,8 @@
 import { getPayload } from "payload";
 import config from "@payload-config";
 import "dotenv/config";
+import { stripe } from "./lib/stripe";
+import { TRPCError } from "@trpc/server";
 const categories = [
   {
     name: "All",
@@ -140,13 +142,20 @@ const categories = [
 const seed = async () => {
   const payload = await getPayload({ config });
 
+  const adminAccount = await stripe.accounts.create({});
+  if (!adminAccount.id) {
+    throw new TRPCError({
+      code: "BAD_REQUEST",
+      message: "Failed to create Stripe account",
+    });
+  }
   //create admin tenant
   const adminTenant = await payload.create({
     collection: "tenants",
     data: {
       name: "admin",
       slug: "admin",
-      stripeAccountId: "admin",
+      stripeAccountId: adminAccount.id,
     },
   });
 
