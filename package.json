@@ -12,7 +12,8 @@
     "db:seed": "tsx src/seed.ts",
     "db:fresh": "payload migrate:fresh",
     "db:reset": "bun run db:fresh && bun run db:seed",
-    "payload:build": "payload build --typescript"
+    "payload:build": "payload build --typescript",
+    "vercel-build": "npm install --legacy-peer-deps && next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -56,7 +57,7 @@
     "client-only": "0.0.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
-    "date-fns": "^4.1.0",
+    "date-fns": "^3.6.0",
     "dotenv": "^17.2.0",
     "embla-carousel-react": "^8.6.0",
     "graphql": "^16.8.1",
