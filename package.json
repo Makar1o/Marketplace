@@ -23,6 +23,8 @@
     "@payloadcms/plugin-multi-tenant": "3.46.0",
     "@payloadcms/richtext-lexical": "3.46.0",
     "@payloadcms/storage-vercel-blob": "3.46.0",
+    "@payloadcms/translations": "3.46.0",
+    "@payloadcms/ui": "3.46.0",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -66,7 +68,7 @@
     "next": "15.2.4",
     "next-themes": "^0.4.6",
     "nuqs": "2.4.1",
-    "payload": "^3.46.0",
+    "payload": "3.46.0",
     "react": "^19.0.0",
     "react-day-picker": "8.10.1",
     "react-dom": "^19.0.0",
@@ -82,7 +84,7 @@
     "tw-animate-css": "^1.2.5",
     "undici": "^5.29.0",
     "vaul": "^1.1.2",
-    "zod": "3.24.2",
+    "zod": "3",
     "zustand": "5.0.3"
   },
   "devDependencies": {
