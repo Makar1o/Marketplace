@@ -36,8 +36,8 @@ Built with **Next.js 15, Payload CMS, Stripe Connect, MongoDB, TailwindCSS v4, a
 
 1. Clone the repository  
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Makar1o/Marketplace.git
+   cd Marketplace
 Install dependencies
 
 npm/bun install
