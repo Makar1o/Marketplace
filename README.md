@@ -40,21 +40,19 @@ Built with **Next.js 15, Payload CMS, Stripe Connect, MongoDB, TailwindCSS v4, a
    cd your-repo-name
 Install dependencies
 
-npm install
+npm/bun install
 
 
 Create a .env.local file and add your environment variables:
 
-MONGODB_URI=your_mongodb_connection_string
-STRIPE_SECRET_KEY=your_stripe_secret
-NEXT_PUBLIC_STRIPE_KEY=your_stripe_publishable_key
-PAYLOAD_SECRET=your_payload_secret
-
+- MONGODB_URI
+- STRIPE_SECRET_KEY
+- NEXT_PUBLIC_STRIPE_KEY
+- PAYLOAD_SECRET
 
 Run the development server
 
-npm run dev
-
+npm/bun run dev 
 
 Open http://localhost:3000
  in your browser.
@@ -66,12 +64,3 @@ The app is deployed on Vercel:
 
 Currently, I am working on fixing some deployment issues, but the local version is fully functional.
 
-📌 Roadmap
-
- Fix deployment issues on Vercel
-
- Improve error handling and validation
-
- Add support for physical products
-
- Enhance dashboard analytics
