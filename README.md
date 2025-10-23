@@ -64,3 +64,4 @@ The app is deployed on Vercel:
 
 Currently, I am working on fixing some deployment issues, but the local version is fully functional.
 
+💡 Author Ruslan Mykytyn - Design & Development
