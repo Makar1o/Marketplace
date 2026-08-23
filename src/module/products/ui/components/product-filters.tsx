@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { PriceFilter } from "./price-filter";
 import { useProductFilters } from "../../hooks/use-product-filters";
 import { TagsFilter } from "./tags-filter";
+import { RatingFilter } from "./rating-filter";
 
 interface ProductFilterProps {
   title: string;
@@ -52,6 +53,11 @@ export const ProductFilters = () => {
     if (typeof value === "string") {
       return value !== "";
     }
+
+    if (typeof value === "number") {
+      return value > 0;
+    }
+
     return value !== null;
   });
 
@@ -59,6 +65,7 @@ export const ProductFilters = () => {
     setFilters({
       minPrice: "",
       maxPrice: "",
+      minRating: 0,
       tags: [],
     });
   };
@@ -83,6 +90,12 @@ export const ProductFilters = () => {
           maxPrice={filters.maxPrice}
           onMinPriceChange={(value) => onChange("minPrice", value)}
           onMaxPriceChange={(value) => onChange("maxPrice", value)}
+        />
+      </ProductFilter>
+      <ProductFilter title="Rating">
+        <RatingFilter
+          value={filters.minRating}
+          onChange={(value) => onChange("minRating", value)}
         />
       </ProductFilter>
       <ProductFilter title="Tags" className="border-b-0">
