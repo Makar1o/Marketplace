@@ -120,6 +120,7 @@ export const productsRouter = createTRPCRouter({
         minPrice: z.string().nullable().optional(),
         maxPrice: z.string().nullable().optional(),
         tags: z.array(z.string()).nullable().optional(),
+        minRating: z.number().min(0).max(5).nullable().optional(),
         sort: z.enum(sortValues).nullable().optional(),
         tenantSlug: z.string().nullable().optional(),
       })
@@ -210,6 +211,37 @@ export const productsRouter = createTRPCRouter({
       if (input.search) {
         where["name"] = {
           like: input.search,
+        };
+      }
+
+      if (input.minRating) {
+        const reviewsData = await ctx.db.find({
+          collection: "reviews",
+          depth: 0,
+          pagination: false,
+          select: {
+            product: true,
+            rating: true,
+          },
+        });
+
+        const ratingsByProduct = new Map<string, { sum: number; count: number }>();
+
+        for (const review of reviewsData.docs) {
+          const productId = String(review.product);
+          const current = ratingsByProduct.get(productId) ?? { sum: 0, count: 0 };
+          ratingsByProduct.set(productId, {
+            sum: current.sum + review.rating,
+            count: current.count + 1,
+          });
+        }
+
+        // Products without reviews cannot satisfy a minimum rating, so an empty
+        // list here correctly narrows the query down to no results.
+        where["id"] = {
+          in: Array.from(ratingsByProduct.entries())
+            .filter(([, { sum, count }]) => sum / count >= input.minRating!)
+            .map(([productId]) => productId),
         };
       }
 

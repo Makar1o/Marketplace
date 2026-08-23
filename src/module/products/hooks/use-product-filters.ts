@@ -1,6 +1,7 @@
 import {
   useQueryStates,
   parseAsArrayOf,
+  parseAsInteger,
   parseAsString,
   parseAsStringLiteral,
 } from "nuqs";
@@ -24,6 +25,12 @@ const params = {
       clearOnDefault: true,
     })
     .withDefault(""),
+
+  minRating: parseAsInteger
+    .withOptions({
+      clearOnDefault: true,
+    })
+    .withDefault(0),
 
   tags: parseAsArrayOf(parseAsString)
     .withOptions({
