@@ -50,6 +50,8 @@ export const ProductView = ({ productId, tenantSlug }: ProductViewProps) => {
             src={data.image?.url || "/placeholder.png"}
             alt={data.name}
             fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 1200px"
             className="object-cover"
           />
         </div>
@@ -188,6 +190,7 @@ export const ProductViewSkeleton = () => {
             src="/placeholder.png"
             alt="Placeholder"
             fill
+            sizes="(max-width: 1024px) 100vw, 1200px"
             className="object-cover"
           />
         </div>

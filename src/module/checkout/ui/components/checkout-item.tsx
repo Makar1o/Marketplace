@@ -35,6 +35,7 @@ export const CheckoutItem = ({
             src={imageUrl || "/placeholder.png"}
             alt={name}
             fill
+            sizes="(max-width: 768px) 33vw, 200px"
             className="object-cover"
           />
         </div>

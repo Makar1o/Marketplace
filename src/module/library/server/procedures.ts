@@ -86,32 +86,47 @@ export const libraryRouter = createTRPCRouter({
             in: productIds,
           },
         },
+        select: {
+          content: false,
+        },
       });
 
-      const dataWithSummorizedReviews = await Promise.all(
-        productsData.docs.map(async (doc) => {
-          const reviewsData = await ctx.db.find({
-            collection: "reviews",
-            pagination: false,
-            where: {
-              product: {
-                equals: doc.id,
-              },
-            },
-          });
-          return {
-            ...doc,
-            reviewsCount: reviewsData.totalDocs,
-            reviewsRating:
-              reviewsData.docs.length === 0
-                ? 0
-                : reviewsData.docs.reduce(
-                    (acc, review) => acc + review.rating,
-                    0
-                  ) / reviewsData.totalDocs,
-          };
-        })
-      );
+      // One query for the whole page instead of one per product.
+      const reviewsData = await ctx.db.find({
+        collection: "reviews",
+        depth: 0,
+        pagination: false,
+        where: {
+          product: {
+            in: productsData.docs.map((doc) => doc.id),
+          },
+        },
+        select: {
+          product: true,
+          rating: true,
+        },
+      });
+
+      const reviewsByProduct = new Map<string, { sum: number; count: number }>();
+
+      for (const review of reviewsData.docs) {
+        const productId = String(review.product);
+        const current = reviewsByProduct.get(productId) ?? { sum: 0, count: 0 };
+        reviewsByProduct.set(productId, {
+          sum: current.sum + review.rating,
+          count: current.count + 1,
+        });
+      }
+
+      const dataWithSummorizedReviews = productsData.docs.map((doc) => {
+        const reviews = reviewsByProduct.get(String(doc.id));
+
+        return {
+          ...doc,
+          reviewsCount: reviews?.count ?? 0,
+          reviewsRating: reviews ? reviews.sum / reviews.count : 0,
+        };
+      });
 
       return {
         ...productsData,
