@@ -60,7 +60,7 @@
     "graphql": "^16.8.1",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.487.0",
-    "next": "^15.5.3",
+    "next": "^15.5.23",
     "next-themes": "^0.4.6",
     "nuqs": "^2.4.1",
     "payload": "^3.56.0",
@@ -87,7 +87,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
+    "eslint-config-next": "^15.5.23",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
